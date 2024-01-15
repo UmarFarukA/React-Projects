@@ -1,0 +1,22 @@
+.user {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: rgb(51, 49, 49);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 1px 1px 0 -1px rgb(97, 95, 95);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 1.4rem;
+  left: 3.2rem;
+  z-index: 1000;
+}
+
+.user span {
+  margin-right: 0.4rem;
+}

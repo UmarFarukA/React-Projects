@@ -1,0 +1,43 @@
+.city {
+  background-color: rgb(59, 63, 72);
+  padding: 1.4rem;
+  text-align: left;
+  border-radius: 0.4rem;
+}
+
+.city div {
+  margin-bottom: 1rem;
+}
+
+.h4 {
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 0.4rem;
+}
+
+.cityName {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.visitDate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.more p {
+  color: goldenrod;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.more p:hover {
+  cursor: pointer;
+  color: rgb(252, 183, 8);
+}

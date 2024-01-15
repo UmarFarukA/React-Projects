@@ -1,0 +1,35 @@
+.locations {
+  background-color: rgb(97, 95, 95);
+  padding: 0.8rem 0.8rem;
+  border-radius: 0.4rem;
+  border: none;
+}
+
+.locations,
+.country,
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
+  text-decoration: none;
+}
+
+.locations {
+  color: aliceblue;
+  font-weight: 400;
+  border-left: 0.2rem solid yellowgreen;
+  transition: all 300ms ease;
+}
+
+.locations:hover {
+  cursor: pointer;
+  background-color: rgb(119, 117, 117);
+}
+
+.delete {
+  background-color: yellowgreen;
+  border: none;
+  border-radius: 50%;
+  padding: 0.1rem 0.3rem;
+}
