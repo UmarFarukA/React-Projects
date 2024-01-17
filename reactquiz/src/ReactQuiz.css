@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222222;
+}
+
+.container {
+  margin: 1.8rem 1.8rem;
+  padding: 1rem;
+}
+
+.content {
+  margin: auto;
+  width: 50%;
+  padding: 1.2rem;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 200;
+  font-family: "Overlock";
+  color: azure;
+}
+
+.app-header img {
+  width: 8.4rem;
+  height: 7.4rem;
+  margin-left: 1.2rem;
+}
+
+progress {
+  width: 100%;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  color: azure;
+  padding: 0.8rem;
+}
+
+.start {
+  font-weight: 300;
+  color: azure;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.start .btn-start {
+  margin-top: 1rem;
+}
+
+.btn {
+  width: 35%;
+  padding: 0.8rem 1.8rem;
+  background-color: #454444;
+  color: azure;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-next {
+  margin-top: 0.8rem;
+  /* float: right; */
+}
+
+.btn-start:hover {
+  color: #454444;
+  background-color: #fff;
+  font-weight: 400;
+}
+
+.btn-timer {
+  margin-top: 0.8rem;
+}
+
+.error,
+.loader {
+  text-align: center;
+  color: azure;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.questions {
+  color: azure;
+}
+
+.option {
+  padding: 1.2rem 1.8rem;
+  background-color: #454444;
+  border-radius: 0.5rem;
+  border: none;
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: left;
+  color: azure;
+}
+
+.correct {
+  background-color: rgb(10, 196, 134);
+}
+
+.wrong {
+  background-color: rgb(236, 102, 102);
+}
+
+.option:hover {
+  cursor: pointer;
+  background-color: #565555;
+  transition: 0.3s all;
+}
+
+.finish {
+  background-color: rgb(11, 189, 189);
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
