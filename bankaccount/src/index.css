@@ -1,13 +1,88 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  margin: 3.2rem 8.4rem;
+  width: 60vw;
+}
+
+.App h1 {
+  margin-bottom: 2.4rem;
+}
+
+.create-customer {
+  margin-bottom: 1.6rem;
+}
+
+.create-customer h3,
+.account h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.customer-fields {
+  background-color: gainsboro;
+  padding: 1.4rem 2.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.btn {
+  padding: 0.4rem 1.2rem;
+}
+
+.create {
+  width: 24vw;
+}
+
+.request {
+  padding: 0.4rem 1.8rem;
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: 9.4rem 12.4rem;
+  align-items: center;
+}
+
+.form-fields input {
+  padding: 0.4rem 1.2rem;
+  outline: none;
+  border-radius: 0.6rem;
+  border: none;
+}
+
+.operations {
+  background-color: gainsboro;
+  padding: 1.4rem 2.8rem;
+}
+
+.account h4 {
+  margin-bottom: 1rem;
+}
+
+.deposit,
+.withdraw,
+.loan {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
 }
