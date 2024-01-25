@@ -30,7 +30,7 @@ body {
 }
 
 .create-customer h3,
-.account h3 {
+.account-header h3 {
   font-size: 2rem;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -77,6 +77,19 @@ body {
 
 .account h4 {
   margin-bottom: 1rem;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance {
+  font-size: 2.2rem;
+  font-weight: 500;
+  background-color: gainsboro;
+  padding: 1rem 2.8rem;
 }
 
 .deposit,

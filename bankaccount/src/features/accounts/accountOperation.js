@@ -2,17 +2,36 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import InputFields from "../../components/InputFields";
 import SelectField from "../../components/selectFields";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Balance from "./balance";
+import { deposit, withdraw } from "./accountSlice";
 
 function AccountOperation() {
   const [depositAmount, setDepositAmount] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
+  const [currency, setCurrency] = useState("USD");
   const fullName = useSelector((store) => store.customer.fullName);
+  const dispatch = useDispatch();
+
+  function handleDeposit() {
+    dispatch(deposit(depositAmount, currency));
+    setDepositAmount("");
+    setCurrency("USD");
+  }
+
+  function handleWithdraw(amount) {
+    dispatch(withdraw(withdrawAmount));
+    setWithdrawAmount("");
+  }
+
   return (
     <div className="account">
-      <h3>👏 Welcome, {fullName}</h3>
+      <div className="account-header">
+        <h3>👏 Welcome, {fullName}</h3>
+        <Balance />
+      </div>
       <h4>Your account Operations</h4>
       <div className="operations">
         <div className="deposit">
@@ -21,12 +40,15 @@ function AccountOperation() {
             value={depositAmount}
             onChange={(e) => setDepositAmount(e.target.value)}
           />
-          <SelectField>
-            <option>NGN - Naira</option>
-            <option>US - Dollar</option>
-            <option>EU - Euro</option>
+          <SelectField
+            currencyType={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            <option value="USD">Dollar</option>
+            <option value="EUR">Euro</option>
+            <option value="CAD">CAD</option>
           </SelectField>
-          <Button>Deposit {depositAmount}</Button>
+          <Button onClick={handleDeposit}>Deposit {depositAmount}</Button>
         </div>
         <div className="withdraw">
           <InputFields
@@ -34,7 +56,7 @@ function AccountOperation() {
             value={withdrawAmount}
             onChange={(e) => setWithdrawAmount(e.target.value)}
           />
-          <Button>Withdraw</Button>
+          <Button onClick={handleWithdraw}>Withdraw</Button>
         </div>
         <div className="loan">
           <InputFields
