@@ -4,7 +4,7 @@ import InputFields from "../../components/InputFields";
 import SelectField from "../../components/selectFields";
 import { useDispatch, useSelector } from "react-redux";
 import Balance from "./balance";
-import { deposit, withdraw } from "./accountSlice";
+import { deposit, withdraw, requestLoan, payLoan } from "./accountSlice";
 
 function AccountOperation() {
   const [depositAmount, setDepositAmount] = useState("");
@@ -13,31 +13,43 @@ function AccountOperation() {
   const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
   const fullName = useSelector((store) => store.customer.fullName);
+  const account = useSelector((store) => store.account);
+
   const dispatch = useDispatch();
 
   function handleDeposit() {
-    dispatch(deposit(depositAmount, currency));
+    dispatch(deposit(Number(depositAmount)));
     setDepositAmount("");
     setCurrency("USD");
   }
 
-  function handleWithdraw(amount) {
+  function handleWithdraw() {
     dispatch(withdraw(withdrawAmount));
     setWithdrawAmount("");
+  }
+
+  function handleRquestLoan() {
+    dispatch(requestLoan(Number(loanAmount)));
+    setLoanAmount("");
+    setLoanPurpose("");
+  }
+
+  function handlePayLoan() {
+    dispatch(payLoan());
   }
 
   return (
     <div className="account">
       <div className="account-header">
         <h3>👏 Welcome, {fullName}</h3>
-        <Balance />
+        <Balance curBalance={account.balance} />
       </div>
       <h4>Your account Operations</h4>
       <div className="operations">
         <div className="deposit">
           <InputFields
             labelCaption="Deposit"
-            value={depositAmount}
+            value={Number(depositAmount)}
             onChange={(e) => setDepositAmount(e.target.value)}
           />
           <SelectField
@@ -61,7 +73,7 @@ function AccountOperation() {
         <div className="loan">
           <InputFields
             labelCaption="Request Loan"
-            value={loanAmount}
+            value={Number(loanAmount)}
             onChange={(e) => setLoanAmount(e.target.value)}
           />
           <InputFields
@@ -69,10 +81,13 @@ function AccountOperation() {
             value={loanPurpose}
             onChange={(e) => setLoanPurpose(e.target.value)}
           />
-          <Button type="request">Request Loan</Button>
+          <Button type="request" onClick={handleRquestLoan}>
+            Request Loan
+          </Button>
         </div>
         <div>
-          <span>Pay back $X</span> <Button>Pay Loan</Button>
+          <span>Pay back ${account.loan}</span>{" "}
+          <Button onClick={handlePayLoan}>Pay Loan</Button>
         </div>
       </div>
     </div>
