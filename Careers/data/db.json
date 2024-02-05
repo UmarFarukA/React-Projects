@@ -3,6 +3,7 @@
     {
       "id": 1,
       "title": "Senior Front-end Developer",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "React Js or Angular JS",
       "salary": "72,000",
       "location": "Nigeria - Kaduna"
@@ -10,6 +11,7 @@
     {
       "id": 2,
       "title": "Junior Front-end Developer",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "HTML, CSS and TailwindCSS or Bootstrap",
       "salary": "52,000",
       "location": "Nigeria - Kano"
@@ -17,6 +19,7 @@
     {
       "id": 3,
       "title": "UI/UX Deisgner",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "Figma and Photoshop",
       "salary": "60,000",
       "location": "Nigeria - Abuja"
@@ -25,6 +28,7 @@
     {
       "id": 4,
       "title": "Web Developer",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "PHP",
       "salary": "70,000",
       "location": "Nigeria - Katsina"
@@ -32,6 +36,7 @@
     {
       "id": 5,
       "title": "Backend Engineer",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "Python, Linux and GraphQL",
       "salary": "80,000",
       "location": "Nigeria - Abuja"
@@ -39,6 +44,7 @@
     {
       "id": 6,
       "title": "DevOps Engineer",
+      "job_desc": "lorem ipsum dolar sit amet consectetur  adipisibing elit. earum. lorem ipsum dolar sit amet consectetur adipisibing elit. earum, sit amet consectetur adipisibing elit.",
       "stack": "Python, Linux",
       "salary": "55,000",
       "location": "Nigeria - Kaduna"
