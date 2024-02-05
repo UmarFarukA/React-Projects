@@ -18,6 +18,7 @@ export default function SearchOrder() {
         placeholder="Enter search order"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        className="w-72 py-2 px-4"
       />
     </form>
   );
