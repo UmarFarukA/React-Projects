@@ -1,0 +1,56 @@
+{
+  "careers": [
+    {
+      "id": 1,
+      "title": "Senior Front-end Developer",
+      "stack": "React Js or Angular JS",
+      "salary": "72,000",
+      "location": "Nigeria - Kaduna"
+    },
+    {
+      "id": 2,
+      "title": "Junior Front-end Developer",
+      "stack": "HTML, CSS and TailwindCSS or Bootstrap",
+      "salary": "52,000",
+      "location": "Nigeria - Kano"
+    },
+    {
+      "id": 3,
+      "title": "UI/UX Deisgner",
+      "stack": "Figma and Photoshop",
+      "salary": "60,000",
+      "location": "Nigeria - Abuja"
+    },
+
+    {
+      "id": 4,
+      "title": "Web Developer",
+      "stack": "PHP",
+      "salary": "70,000",
+      "location": "Nigeria - Katsina"
+    },
+    {
+      "id": 5,
+      "title": "Backend Engineer",
+      "stack": "Python, Linux and GraphQL",
+      "salary": "80,000",
+      "location": "Nigeria - Abuja"
+    },
+    {
+      "id": 6,
+      "title": "DevOps Engineer",
+      "stack": "Python, Linux",
+      "salary": "55,000",
+      "location": "Nigeria - Kaduna"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "career_id": 0,
+      "name": "",
+      "email": "",
+      "address": ""
+    }
+  ]
+}

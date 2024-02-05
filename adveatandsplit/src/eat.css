@@ -43,9 +43,12 @@
 }
 
 .friendList {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
+
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem;
   margin-bottom: 12px;
   padding: 8px;
 }
