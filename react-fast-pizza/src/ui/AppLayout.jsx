@@ -7,7 +7,7 @@ export default function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
   return (
-    <div className="grid grid-rows[auto_1fr_auto]">
+    <div className="grid grid-rows[auto_1fr_auto] relative">
       {isLoading && <Loader />}
       <Header />
 

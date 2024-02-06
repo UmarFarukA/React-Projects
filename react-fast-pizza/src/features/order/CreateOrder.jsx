@@ -2,6 +2,8 @@
 
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
+import InputField from "../../ui/InputField";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -42,44 +44,31 @@ function CreateOrder() {
   const formErros = useActionData();
 
   return (
-    <div className="max-w-96 mx-auto px-6 py-4 mt-6">
-      <h2>Ready to order? Let's go!</h2>
+    <div className="w-full sm:w-7/12 mx-auto px-6 py-4 mt-6">
+      <h2 className="mb-2 text-stone-600 font-semibold text-xl sm:text-3xl">Ready to order? Let's go!</h2>
 
       <Form method="post">
-        <div>
-          <label>First Name</label>
-          <input type="text" name="customer" required />
-        </div>
+        
+        <InputField label="First Name" type="text" name="customer"/>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input type="tel" name="phone" required />
-          </div>
-          {formErros?.phone && <p>{formErros.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input type="text" name="address" required />
-          </div>
-        </div>
-
-        <div>
-          <input
-            type="checkbox"
-            name="priority"
-            id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
-          />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+        
+        <InputField label="Phone number" type="tel" name="phone"/>
+        <InputField label="Address" type="text" name="address"/>
+          <div className="flex items-center gap-1 mb-2">
+            <input
+              type="checkbox"
+              name="priority"
+              id="priority"
+              // value={withPriority}
+              // onChange={(e) => setWithPriority(e.target.checked)}
+              className="px-1 py-2 w-8 bg-yellow-300"
+            />
+            <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button>{isSubmitting ? "Placing Order..." : "Order now"}</button>
+          <Button>{isSubmitting ? "Placing Order..." : "Order now"}</Button>
         </div>
       </Form>
     </div>
