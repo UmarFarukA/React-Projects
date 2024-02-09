@@ -4,7 +4,7 @@
 
 @layer components {
   .input {
-    @apply w-full px-3 py-2 text-stone-600 rounded-full focus:outline-none focus:ring focus:ring-slate-100
+    @apply w-full px-3 py-2 bg-stone-100 text-stone-600 rounded-full focus:outline-none focus:ring focus:ring-stone-200;
   }
   .loader {
     width: 45px;
@@ -14,7 +14,7 @@
     background-size: 20% 50%;
     animation: loading 1s infinite linear;
   }
-  
+
   @keyframes loading {
     20% {
       background-position: 0% 0%, 50% 50%, 100% 50%;
@@ -46,4 +46,3 @@
 }  */
 
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
-

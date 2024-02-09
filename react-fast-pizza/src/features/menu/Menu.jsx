@@ -4,8 +4,6 @@ import MenuItem from "./MenuItem";
 
 function Menu() {
   const menu = useLoaderData();
-  // console.log(menu);
-
   return (
     <ul className="mt-2 w-full divide-y-2 divide-stone-200">
       {menu.map((item) => (
