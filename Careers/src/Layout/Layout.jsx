@@ -6,8 +6,8 @@ export default function Layout() {
   return (
     <div className="grid grid-rows-[auto_1fr_auto]">
       <Header />
-      <div className="h-screen">
-        <main className="px-4 py-8 max-w-4xl mx-auto">
+      <div className="overflow-scroll">
+        <main className="mx-auto h-screen max-w-4xl px-4 py-8">
           <Outlet />
         </main>
       </div>

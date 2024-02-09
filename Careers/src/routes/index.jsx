@@ -27,17 +27,18 @@ const routes = [
     path: PathContants.HELP,
     element: <Help />,
     errorElement: <Error />,
-  },
+    children: [
+      {
+        path: PathContants.FAQ,
+        element: <FAQ />,
+      },
 
-  {
-    path: PathContants.FAQ,
-    element: <FAQ />,
-  },
-
-  {
-    path: PathContants.CONTACT,
-    element: <Contact />,
-    action: contactAction,
+      {
+        path: PathContants.CONTACT,
+        element: <Contact />,
+        action: contactAction,
+      },
+    ],
   },
 
   {

@@ -62,6 +62,7 @@ function Order() {
     <div>
       <div>
         <h2>Status</h2>
+        <p className="hidden">{id} - {cart}</p>
 
         <div>
           {priority && <span>Priority</span>}

@@ -1,23 +1,28 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import PathContants from "../../routes/pathConstants";
+import Button from "../../components/Button";
 
 export default function CareerDetails() {
   const career = useLoaderData();
   return (
-    <div className="bg-stone-100 px-4 py-8 my-3  rounded">
-      <h4 className="text-stone-600 text-3xl mb-3">{career.title}</h4>
+    <div className="my-3 rounded bg-stone-100 px-4  py-8">
+      <h4 className="mb-3 text-3xl text-stone-600">{career.title}</h4>
       <p>{career.job_desc}</p>
-      <p className="mt-2 text-sm flex items-center gap-3 text-stone-600 mb-3">
+      <p className="mb-3 mt-2 flex items-center gap-3 text-sm text-stone-600">
         <span>{career.stack}</span> - <span>{career.location}</span> -{" "}
         <span>{career.salary}</span>
       </p>
 
-      <Link
+      {/* <Link
         to={PathContants.APPY_CAREER}
-        className="px-4 py-2 rounded bg-purple-700 text-stone-100 hover:bg-purple-600 transition-all"
+        className="rounded bg-purple-700 px-4 py-2 text-stone-100 transition-all hover:bg-purple-600"
       >
         Apply
-      </Link>
+      </Link> */}
+
+      <Button to={PathContants.APPY_CAREER} type="primary">
+        Apply
+      </Button>
     </div>
   );
 }

@@ -1,33 +1,27 @@
 import { Form, useActionData } from "react-router-dom";
+import InputField from "./InputField";
+import TextAreaField from "./TextAreaField";
+import Button from "./Button";
 
 export default function Contact() {
   const errors = useActionData();
 
   return (
     <Form method="post">
-      <h4>Kindly let Us know if you have any inquiry</h4>
+      <h4 className="mb-2 font-bold text-stone-600">
+        Kindly let Us know if you have any inquiry
+      </h4>
+      <InputField labelTitle="Name" name="name" type="text" errors={errors} />
+      <InputField
+        labelTitle="Email"
+        name="email"
+        type="email"
+        errors={errors}
+      />
+      <TextAreaField labelTitle="Your query" name="content" errors={errors} />
+
       <div>
-        <label htmlFor="name">Name</label>
-        <div>
-          <input type="text" placeholder="Your name" name="name" />
-        </div>
-        {errors?.name && <p>{errors.name}</p>}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <div>
-          <input type="email" placeholder="Your email" name="email" required />
-        </div>
-      </div>
-      <div>
-        <label htmlFor="content">Your query</label>
-        <div>
-          <textarea required name="content"></textarea>
-          {errors?.content && <p>{errors.content}</p>}
-        </div>
-      </div>
-      <div>
-        <button>Submit</button>
+        <Button type="primary">Submit</Button>
       </div>
     </Form>
   );

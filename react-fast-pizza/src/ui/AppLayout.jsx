@@ -12,7 +12,7 @@ export default function AppLayout() {
       <Header />
 
       <div className="overflow-scroll mx-4">
-        <main className=" h-screen">
+        <main className=" h-screen w-10/12 mx-auto mt-3">
           <Outlet />
         </main>
       </div>
