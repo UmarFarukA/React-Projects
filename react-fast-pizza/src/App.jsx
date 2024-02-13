@@ -8,6 +8,7 @@ import CreateOrder, {
   action as createOrderAction,
 } from "./features/order/CreateOrder";
 import AppLayout from "./ui/AppLayout";
+import NotFound from "./ui/NotFound";
 
 const routes = createBrowserRouter([
   {
@@ -18,11 +19,23 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+
       {
         path: "/menu",
         element: <Menu />,
         loader: menuLoader,
         errorElement: <Error />,
+      },
+
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+
+      {
+        path: "/order/new",
+        element: <CreateOrder />,
+        action: createOrderAction,
       },
 
       {
@@ -33,14 +46,8 @@ const routes = createBrowserRouter([
       },
 
       {
-        path: "/order/new",
-        element: <CreateOrder />,
-        action: createOrderAction,
-      },
-
-      {
-        path: "/cart",
-        element: <Cart />,
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
