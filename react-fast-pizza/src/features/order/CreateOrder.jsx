@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import InputField from "../../ui/InputField";
 import Button from "../../ui/Button";
@@ -23,10 +23,10 @@ function CreateOrder() {
 
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-  // const formErros = useActionData();
+  const formErros = useActionData();
 
   return (
-    <div className="w-full sm:w-7/12 mx-auto px-6 py-4 mt-6">
+    <div className="sm:w-full md:w-9/12 w-full md:mx-auto px-6 py-4 mt-6">
       <h2 className="mb-2  text-stone-600 font-semibold text-lg sm:text-3xl">
         Ready to order? Let's go!
       </h2>
@@ -39,7 +39,12 @@ function CreateOrder() {
           value={username}
         />
 
-        <InputField label="Phone number" type="tel" name="phone" />
+        <InputField
+          label="Phone number"
+          type="tel"
+          name="phone"
+          errors={formErros}
+        />
         <InputField label="Address" type="text" name="address" />
         <div className="flex items-center gap-2 m-3">
           <input
@@ -81,6 +86,8 @@ export async function action({ request }) {
   if (!isValidPhone(order.phone))
     errors.phone =
       "Enter a valid phone Number, we need it to confirm the order";
+
+  // if (data.name.length <= 2) errors.phone = "Enter a valid name";
 
   if (Object.keys(errors).length > 0) return errors;
 

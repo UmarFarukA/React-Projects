@@ -7,7 +7,7 @@ export default function Header() {
     <div
       className="bg-yellow-300 uppercase tracking-widest text-xl py-4 px-4 
                     sm:py-6 sm:px-6 border-stone-400 border-b-2
-                    flex justify-between items-center"
+                    flex flex-col sm:flex-row items-center justify-between sm:justify-between "
     >
       <Link to="/" className="mb-1">
         React Fast Pizza
