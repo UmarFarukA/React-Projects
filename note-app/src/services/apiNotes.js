@@ -7,22 +7,22 @@ export const getNotes = async () => {
 };
 
 export const getNoteById = async (id) => {
-  const note = await supabase.from("notes").eq("id", id).select();
+  const note = await supabase.from("notes").select("*").eq("id", id);
   return note;
 };
 
-export const insertNote = async (title, description) => {
+export const insertNote = async (title, content) => {
   const notes = await supabase
-    .from()
-    .insert([{ title: title, description: description }])
+    .from("notes")
+    .insert([{ title, content }])
     .select();
   return notes;
 };
 
-export const updateNote = async (id, data) => {
+export const updateNote = async (id, title, content) => {
   const note = await supabase
     .from("notes")
-    .update({ title: data.title, description: data.description })
+    .update({ title: title, content: content })
     .eq("id", id)
     .select();
 

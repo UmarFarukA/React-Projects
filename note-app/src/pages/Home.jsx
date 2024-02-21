@@ -21,13 +21,17 @@ export default function Home() {
     fetchNotes();
   }, []);
 
+  const onDelete = (id) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  };
+
   if (err) return <Error message="Unable to fetch Notes" />;
 
   return (
     <div>
       <ul className="flex flex-wrap gap-2">
         {notes.map((note) => (
-          <NoteItem key={note.id} note={note} />
+          <NoteItem key={note.id} note={note} onDelete={onDelete} />
         ))}
       </ul>
     </div>
