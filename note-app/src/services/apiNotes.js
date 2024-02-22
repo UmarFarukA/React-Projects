@@ -1,7 +1,11 @@
 import supabase from "../config/superbase";
 
 export const getNotes = async () => {
-  const notes = await supabase.from("notes").select("*");
+  const { data: notes, error } = await supabase.from("notes").select("*");
+
+  if (error) {
+    throw new Error("Error in fetching notes");
+  }
 
   return notes;
 };
@@ -11,11 +15,8 @@ export const getNoteById = async (id) => {
   return note;
 };
 
-export const insertNote = async (title, content) => {
-  const notes = await supabase
-    .from("notes")
-    .insert([{ title, content }])
-    .select();
+export const insertNote = async (newNote) => {
+  const notes = await supabase.from("notes").insert([newNote]).select();
   return notes;
 };
 

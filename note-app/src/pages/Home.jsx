@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NoteItem from "../ui/NoteItem";
 import { getNotes } from "../services/apiNotes";
 import Error from "../ui/Error";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../ui/Loading";
 
 export default function Home() {
-  const [notes, setNotes] = useState([]);
-  const [err, setErr] = useState(null);
+  // const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    const fetchNotes = async () => {
-      const { data, error } = await getNotes();
-      if (error) {
-        setErr(error);
-        console.log(err);
-      }
+  const {
+    isLoading,
+    error,
+    data: notes,
+  } = useQuery({
+    queryKey: ["notes"],
+    queryFn: getNotes,
+  });
 
-      if (data) setNotes(data);
-    };
+  if (isLoading) return <Loading />;
 
-    fetchNotes();
-  }, []);
+  if (error) return <Error message="Unable to fetch Notes" />;
 
-  const onDelete = (id) => {
-    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
-  };
-
-  if (err) return <Error message="Unable to fetch Notes" />;
+  // const onDelete = (id) => {
+  //   setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  // };
 
   return (
     <div>
       <ul className="flex flex-wrap gap-2">
         {notes.map((note) => (
-          <NoteItem key={note.id} note={note} onDelete={onDelete} />
+          <NoteItem key={note.id} note={note} />
         ))}
       </ul>
     </div>

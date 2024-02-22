@@ -3,17 +3,27 @@ import { MdDeleteOutline } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { deleteNote } from "../services/apiNotes";
 import Error from "./Error";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
-export default function NoteItem({ note, onDelete }) {
+export default function NoteItem({ note }) {
   // const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: deleteNote,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["notes"],
+      });
+      toast.success("Note successfully deleted");
+    },
+
+    onError: () => <Error message="Error in deleting Note!" />,
+  });
   const { id, title, content } = note;
 
   const handleDelete = async (id) => {
-    const { data, error } = await deleteNote(id);
-
-    if (error) return <Error message="Error in deleting Note!" />;
-
-    onDelete(id);
+    mutation.mutate(id);
   };
 
   return (

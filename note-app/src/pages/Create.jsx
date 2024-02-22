@@ -1,37 +1,36 @@
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 import Button from "../ui/Button";
 import { insertNote } from "../services/apiNotes";
 import { useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
 
 export default function Create() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [content, setContent] = useState("");
   const navigate = useNavigate();
-  const errors = {};
+  const queryClient = useQueryClient();
+  const { register, handleSubmit, reset, formState: errors } = useForm();
 
-  const handleAddNote = async (e) => {
-    e.preventDefault();
-    if (!title) {
-      errors.name = "A note title is required";
-    }
+  const mutation = useMutation({
+    mutationFn: insertNote,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["notes"],
+      });
+    },
 
-    if (!content) {
-      errors.content = "A note content is required!";
-    }
+    onError: () => <Error message="An error occured while creating new note" />,
+  });
 
-    const { data, err } = await insertNote(title, content);
-
-    if (err)
-      return <Error message="An error occured while creating new note" />;
-
-    if (data) {
-      navigate("/");
-    }
+  const onAddNote = async (data) => {
+    mutation.mutate(data);
+    reset();
+    navigate("/");
   };
 
   function handelReset() {
-    setTitle("");
-    setContent("");
+    reset();
   }
 
   return (
@@ -40,27 +39,28 @@ export default function Create() {
         Create New Note
       </h3>
 
-      <form className="w-full" onSubmit={handleAddNote}>
+      <form className="w-full" onSubmit={handleSubmit(onAddNote)}>
         <div className="py-4">
-          <label className="mb-3 ml-1 text-sm sm:text-lg font-bold text-gray-500">
+          <label
+            htmlFor="title"
+            className="mb-3 ml-1 text-sm sm:text-lg font-bold text-gray-500"
+          >
             Title
           </label>
           <div className="mt-2">
             <input
               type="text"
               placeholder="Enter note title"
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              {...register("title")}
               className="outline-gray-200 focus:outline-none focus:ring focus:ring-green-500 rounded-lg px-2 py-2 text-stone-600 w-full"
             />
-            <span>
+            {/* <span>
               {errors.name ? (
                 <p className="text-sm text-red-400">{errors.name}</p>
               ) : (
                 ""
               )}
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="mb-4">
@@ -70,9 +70,7 @@ export default function Create() {
           <div className="mt-2">
             <textarea
               placeholder="Enter note content"
-              required
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              {...register("content")}
               className="outline-gray-200 focus:outline-none focus:ring focus:ring-green-500 rounded-lg px-3 py-3 text-stone-600 w-full"
             ></textarea>
           </div>
