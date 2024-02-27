@@ -18,7 +18,9 @@ export default function NoteItem({ note }) {
       toast.success("Note successfully deleted");
     },
 
-    onError: () => <Error message="Error in deleting Note!" />,
+    onError: () => {
+      toast.error("Error deleting note");
+    },
   });
   const { id, title, content } = note;
 

@@ -21,10 +21,6 @@ export default function Home() {
 
   if (error) return <Error message="Unable to fetch Notes" />;
 
-  // const onDelete = (id) => {
-  //   setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
-  // };
-
   return (
     <div>
       <ul className="flex flex-wrap gap-2">

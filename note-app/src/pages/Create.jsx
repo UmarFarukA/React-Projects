@@ -4,6 +4,7 @@ import { insertNote } from "../services/apiNotes";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function Create() {
   // const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ export default function Create() {
       queryClient.invalidateQueries({
         queryKey: ["notes"],
       });
+      toast.success("Note successfully created");
     },
 
     onError: () => <Error message="An error occured while creating new note" />,

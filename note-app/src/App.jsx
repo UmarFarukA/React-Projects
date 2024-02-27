@@ -24,18 +24,20 @@ export default function App() {
         position="top-center"
         gutter={10}
         toastOptions={{
-          duration: 5000,
-          style: {
-            background: "bg-slate-100",
-            color: "text-stone-600",
-          },
-
           success: {
             duration: 4000,
+            style: {
+              background: "bg-slate-200",
+              color: "text-green-400",
+            },
           },
 
           error: {
             duration: 6000,
+            style: {
+              background: "bg-red-600",
+              color: "text-stone-50",
+            },
           },
         }}
       />
