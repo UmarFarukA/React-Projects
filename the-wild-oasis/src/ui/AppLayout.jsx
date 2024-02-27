@@ -5,10 +5,10 @@ import { Outlet } from "react-router-dom";
 
 export default function AppLayout() {
   return (
-    <div className=" grid grid-cols-[16rem_auto] grid-rows-[4rem_1fr] h-dvh">
+    <div className=" grid grid-cols-[16rem_auto] grid-rows-[5rem_1fr] h-dvh">
       <Header />
       <Sidebar />
-      <main className="bg-gray-100  col-start-2">
+      <main className="bg-neutral-50  col-start-2 px-5 py-3">
         <Outlet />
       </main>
     </div>

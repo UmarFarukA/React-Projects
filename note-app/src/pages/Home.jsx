@@ -6,8 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../ui/Loading";
 
 export default function Home() {
-  // const [notes, setNotes] = useState([]);
-
   const {
     isLoading,
     error,

@@ -1,5 +1,7 @@
+import Heading from "../ui/Heading";
+
 function Bookings() {
-  return <h1>All bookings</h1>;
+  return <Heading type="h1">All bookings</Heading>;
 }
 
 export default Bookings;

@@ -22,7 +22,7 @@ export default function Create() {
       toast.success("Note successfully created");
     },
 
-    onError: () => <Error message="An error occured while creating new note" />,
+    onError: () => toast.error("Error Creating Note"),
   });
 
   const onAddNote = async (data) => {
