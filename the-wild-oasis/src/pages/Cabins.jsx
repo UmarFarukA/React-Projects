@@ -2,14 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import Heading from "../ui/Heading";
 import Spinner from "../ui/Spinner";
 import { getCabins } from "../services/apiCabins";
-import Row from "../ui/Row";
+import CabinRow from "../features/cabins/CabinRow";
 import { useState } from "react";
 import Button from "../ui/Button";
-import CreateCabinForm from "../ui/CreateCabinForm";
+import CreateCabinForm from "../features/cabins/CreateCabinForm";
+import CabinTable from "../features/cabins/CabinTable";
 
 function Cabins() {
   const [showAdd, setShowAdd] = useState(false);
-  // const [editCabin, setEditCabin] = useState(false);
+  const [editId, setEditId] = useState(null);
   const {
     isLoading,
     error,
@@ -18,6 +19,12 @@ function Cabins() {
     queryKey: ["cabins"],
     queryFn: getCabins,
   });
+
+  const onEdit = (id) => {
+    // const cabin_to_edit = cabins.filter((cabin) => cabin.id === id);
+    setShowAdd(!showAdd);
+    setEditId(id);
+  };
 
   if (isLoading) return <Spinner />;
 
@@ -31,25 +38,20 @@ function Cabins() {
       </div>
 
       <div className="py-4">
-        <table className="w-full border-collapse ">
-          <thead>
-            <tr>
-              <th className="text-stone-600 text-lg">Image</th>
-              <th className="text-stone-600 text-lg">Cabin</th>
-              <th className="text-stone-600 text-lg">Capacity</th>
-              <th className="text-stone-600 text-lg">Price</th>
-              <th className="text-stone-600 text-lg">Discount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cabins.map((cabin) => (
-              <Row key={cabin.id} cabin={cabin} />
-            ))}
-          </tbody>
-        </table>
+        <CabinTable>
+          {cabins.map((cabin) => (
+            <CabinRow
+              key={cabin.id}
+              cabin={cabin}
+              edit={() => onEdit(cabin.id)}
+            />
+          ))}
+        </CabinTable>
       </div>
 
-      {showAdd && <CreateCabinForm />}
+      {showAdd && <CreateCabinForm editId={editId} cabins={cabins} />}
+
+      {/* {editCabin && <CreateCabinForm />} */}
 
       <Button onClick={() => setShowAdd((prevShow) => !prevShow)}>
         {showAdd ? "Close" : "Add Cabin"}

@@ -1,89 +1,171 @@
-import styled from "styled-components";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { createCabin } from "../../services/apiCabins";
+import toast from "react-hot-toast";
 
-import Input from "../../ui/Input";
-import Form from "../../ui/Form";
-import Button from "../../ui/Button";
-import FileInput from "../../ui/FileInput";
-import Textarea from "../../ui/Textarea";
+export default function CreateCabinForm({ editId, cabins }) {
+  let cabin;
 
-const FormRow = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
-
-  padding: 1.2rem 0;
-
-  &:first-child {
-    padding-top: 0;
+  if (editId) {
+    cabin = cabins.filter((c) => c.id === editId).at(0);
   }
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: createCabin,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["cabins"],
+      });
 
-  &:last-child {
-    padding-bottom: 0;
-  }
+      toast.success("Cabin create successfully");
+    },
+  });
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    getValues,
+    formState: { errors },
+  } = useForm();
 
-  &:has(button) {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.2rem;
-  }
-`;
+  const onSubmit = (data) => {
+    mutation.mutate(data);
+    reset();
+  };
 
-const Label = styled.label`
-  font-weight: 500;
-`;
-
-const Error = styled.span`
-  font-size: 1.4rem;
-  color: var(--color-red-700);
-`;
-
-function CreateCabinForm() {
   return (
-    <Form>
-      <FormRow>
-        <Label htmlFor="name">Cabin name</Label>
-        <Input type="text" id="name" />
-      </FormRow>
+    <div className="py-4 ">
+      <form
+        className="text-stone-600 text-lg"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="name">Cabin Name</label>
+          <div className="w-full">
+            <input
+              type="text"
+              id="name"
+              className="outline-none focus:ring focus:ring-stone-500 rounded-full px-3 py-2 bg-gray-100 w-full"
+              {...register("name", {
+                required: " Cabin Name is required",
+                min: {
+                  value: 2,
+                  message: "Cabin name must above two characters",
+                },
+                max: {
+                  value: 6,
+                  message: "Cabin name should not be above six characters",
+                },
+              })}
+              defaultValue={cabin && cabin.name}
+            />
+            {errors.name && (
+              <span className="text-red-400 text-sm">
+                {errors?.name?.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="maxCapacity">Capacity</label>
+          <div>
+            <input
+              type="number"
+              id="maxCapacity"
+              className="outline-none focus:ring focus:ring-stone-500 rounded-full px-3 py-2 bg-gray-100 w-full"
+              defaultValue={cabin ? cabin.maxCapacity : 0}
+              {...register("maxCapacity", {
+                required: "Cabin Capacity is required",
+              })}
+            />
+            {errors.maxCapacity && (
+              <span className="text-red-400 text-sm">
+                {errors?.maxCapacity?.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="regularPrice">Price</label>
+          <div>
+            <input
+              type="number"
+              id="regularPrice"
+              className="outline-none focus:ring focus:ring-stone-500 rounded-full px-3 py-2 bg-gray-100 w-full"
+              defaultValue={cabin ? cabin.regularPrice : 0}
+              {...register("regularPrice", {
+                required: "Cabin Price is required",
+              })}
+            />
+            {errors.regularPrice && (
+              <span className="text-red-400 text-sm">
+                {errors?.regularPrice?.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="discount">Discount</label>
+          <div>
+            <input
+              type="number"
+              id="discount"
+              className="outline-none focus:ring focus:ring-stone-500 rounded-full px-3 py-2 bg-gray-100 w-full"
+              defaultValue={cabin ? cabin.discount : 0}
+              {...register("discount", {
+                required: "Cabin discount is required",
+                validate: (val) =>
+                  val <= getValues().regularPrice ||
+                  "Discount shoul be less than Price",
+              })}
+            />
+            {errors.discount && (
+              <span className="text-red-400 text-sm">
+                {errors?.discount?.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="description">Description</label>
+          <div>
+            <input
+              type="text"
+              id="description"
+              className="outline-none focus:ring focus:ring-stone-500 rounded-full px-3 py-2 bg-gray-100 w-full"
+              {...register("description", {
+                required: "Cabin description is required",
+                min: {
+                  value: 15,
+                  message:
+                    "Cabin description shouldn't be less than 15 characters",
+                },
+                max: {
+                  value: 60,
+                  message:
+                    "Cabin description shouldn't be above than 60 characters",
+                },
+              })}
+              defaultValue={cabin && cabin.description}
+            />
+            {errors.description && (
+              <span className="text-red-400 text-sm">
+                {errors?.description?.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
+          <label htmlFor="image">Image</label>
+          <div>
+            <input type="file" id="image" />
+          </div>
+        </div>
 
-      <FormRow>
-        <Label htmlFor="maxCapacity">Maximum capacity</Label>
-        <Input type="number" id="maxCapacity" />
-      </FormRow>
-
-      <FormRow>
-        <Label htmlFor="regularPrice">Regular price</Label>
-        <Input type="number" id="regularPrice" />
-      </FormRow>
-
-      <FormRow>
-        <Label htmlFor="discount">Discount</Label>
-        <Input type="number" id="discount" defaultValue={0} />
-      </FormRow>
-
-      <FormRow>
-        <Label htmlFor="description">Description for website</Label>
-        <Textarea type="number" id="description" defaultValue="" />
-      </FormRow>
-
-      <FormRow>
-        <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
-      </FormRow>
-
-      <FormRow>
-        {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
-          Cancel
-        </Button>
-        <Button>Edit cabin</Button>
-      </FormRow>
-    </Form>
+        <button>Create Cabin</button>
+      </form>
+    </div>
   );
 }
-
-export default CreateCabinForm;
