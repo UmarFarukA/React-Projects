@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+// import { useContext } from "react";
+// import { ModalContext } from "./Modal";
 
 export default function Navigation() {
   return (
@@ -6,11 +8,13 @@ export default function Navigation() {
       <NavLink to="/" className="hover:text-stone-300">
         Home
       </NavLink>
-      <NavLink to="create" className="hover:text-stone-300">
+      <NavLink to="/create" className="hover:text-stone-300">
         Create
       </NavLink>
-      {/* <NavLink to="login" className="hover:text-stone-300">Login</NavLink>
-      <NavLink to="signup">Sign Up</NavLink> */}
+      <NavLink to="login" className="hover:text-stone-300">
+        Login
+      </NavLink>
+      <NavLink to="signup">Sign Up</NavLink>
     </nav>
   );
 }

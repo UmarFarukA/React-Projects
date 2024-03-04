@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import Button from "../ui/Button";
 import { insertNote } from "../services/apiNotes";
 import { useNavigate } from "react-router-dom";
@@ -7,9 +6,6 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function Create() {
-  // const [title, setTitle] = useState("");
-  // const [content, setContent] = useState("");
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { register, handleSubmit, reset, formState: errors } = useForm();
 

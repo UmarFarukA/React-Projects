@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { createCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
+import Button from "../../ui/Button";
 
-export default function CreateCabinForm({ editId, cabins }) {
+export default function CreateCabinForm({ editId, cabins, showAdd }) {
   let cabin;
 
   if (editId) {
@@ -36,7 +36,7 @@ export default function CreateCabinForm({ editId, cabins }) {
   };
 
   return (
-    <div className="py-4 ">
+    <div className=" px-4 py-6">
       <form
         className="text-stone-600 text-lg"
         onSubmit={handleSubmit(onSubmit)}
@@ -53,10 +53,6 @@ export default function CreateCabinForm({ editId, cabins }) {
                 min: {
                   value: 2,
                   message: "Cabin name must above two characters",
-                },
-                max: {
-                  value: 6,
-                  message: "Cabin name should not be above six characters",
                 },
               })}
               defaultValue={cabin && cabin.name}
@@ -160,11 +156,22 @@ export default function CreateCabinForm({ editId, cabins }) {
         <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
           <label htmlFor="image">Image</label>
           <div>
-            <input type="file" id="image" />
+            <input
+              type="file"
+              id="image"
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+            />
           </div>
         </div>
 
-        <button>Create Cabin</button>
+        <div className="mx-2 flex items-center justify-end space-x-3">
+          {/* <Button type="cancel" onClick={setShowAdd((prev) => !prev)}>
+            Cancel
+          </Button> */}
+          <Button type="normal">
+            {showAdd ? "Create Cabin" : "Update Cabin"}
+          </Button>
+        </div>
       </form>
     </div>
   );

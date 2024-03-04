@@ -3,8 +3,11 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
 import { deleteCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
+import Modal from "../../ui/Modal";
+import CreateCabinForm from "./CreateCabinForm";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
-export default function Row({ cabin, edit }) {
+export default function Row({ cabin, edit, rowId, cabins }) {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: deleteCabin,
@@ -34,14 +37,32 @@ export default function Row({ cabin, edit }) {
       <td>{regularPrice}</td>
       <td>{discount}</td>
       <td className="flex items-center  space-x-2">
-        <MdOutlineModeEditOutline
-          className="hover:text-indigo-600 font-bold"
-          onClick={edit}
-        />
-        <MdOutlineDelete
-          onClick={() => onDeleteCabin(id)}
-          className="hover:text-indigo-600 font-bold"
-        />
+        <Modal>
+          <Modal.Open modalToOpen="edit-modal">
+            <MdOutlineModeEditOutline
+              className="hover:text-indigo-600 font-bold"
+              onClick={edit}
+            />
+          </Modal.Open>
+          <Modal.Window
+            windowName="edit-modal"
+            className="bg-stone-50 px-2 py-4 absolute inset-x-0 top-2 left-3 w-3/4 m-auto border border-gray-300 shadow rounded-md transition-all ease-in-out delay-300 duration-300"
+          >
+            <CreateCabinForm cabins={cabins} editId={rowId} />
+          </Modal.Window>
+        </Modal>
+        {/* onClick={() => onDeleteCabin(id)} */}
+        <Modal>
+          <Modal.Open modalToOpen="delete-cabin">
+            <MdOutlineDelete className="hover:text-indigo-600 font-bold" />
+          </Modal.Open>
+          <Modal.Window
+            windowName="delete-cabin"
+            className="absolute inset-x-0 top-2 left-10 w-3/4 m-auto"
+          >
+            <ConfirmDelete />
+          </Modal.Window>
+        </Modal>
       </td>
     </tr>
   );
