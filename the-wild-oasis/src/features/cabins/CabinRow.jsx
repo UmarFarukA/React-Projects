@@ -1,27 +1,12 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
-import { deleteCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
 import Modal from "../../ui/Modal";
 import CreateCabinForm from "./CreateCabinForm";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import useDeleteCabin from "./useDeleteCabin";
 
 export default function Row({ cabin, edit, rowId, cabins }) {
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: deleteCabin,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
-      toast.success("Cabin deleted successfully");
-    },
-
-    onError: () => {
-      toast.error("Error deleting Cabin");
-    },
-  });
+  const mutation = useDeleteCabin();
   const { id, image, name, maxCapacity, regularPrice, discount } = cabin;
 
   const onDeleteCabin = (cabin_id) => {
@@ -46,21 +31,21 @@ export default function Row({ cabin, edit, rowId, cabins }) {
           </Modal.Open>
           <Modal.Window
             windowName="edit-modal"
-            className="bg-stone-50 px-2 py-4 absolute inset-x-0 top-2 left-3 w-3/4 m-auto border border-gray-300 shadow rounded-md transition-all ease-in-out delay-300 duration-300"
+            className="absolute top-7 right-6 bg-stone-50 px-2 py-4 inset-x-0  w-3/4 m-auto border border-gray-300 shadow rounded-md transition-all ease-in-out delay-300 duration-300"
           >
             <CreateCabinForm cabins={cabins} editId={rowId} />
           </Modal.Window>
         </Modal>
-        {/* onClick={() => onDeleteCabin(id)} */}
+
         <Modal>
           <Modal.Open modalToOpen="delete-cabin">
-            <MdOutlineDelete className="hover:text-indigo-600 font-bold" />
+            <MdOutlineDelete className="hover:text-indigo-600 font-bold " />
           </Modal.Open>
           <Modal.Window
             windowName="delete-cabin"
-            className="absolute inset-x-0 top-2 left-10 w-3/4 m-auto"
+            className="absolute top-1/2 left-1/4 px-4 py-3 rounded-md flex flex-col items-center justify-center bg-stone-50 shadow border border-stone-300 w-1/4"
           >
-            <ConfirmDelete />
+            <ConfirmDelete onClick={() => onDeleteCabin(id)} />
           </Modal.Window>
         </Modal>
       </td>

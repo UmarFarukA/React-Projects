@@ -1,8 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+// import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
+// import { createCabin } from "../../services/apiCabins";
+// import toast from "react-hot-toast";
 import Button from "../../ui/Button";
+import useCreate from "./useCreate";
 
 export default function CreateCabinForm({ editId, cabins, showAdd }) {
   let cabin;
@@ -10,17 +11,8 @@ export default function CreateCabinForm({ editId, cabins, showAdd }) {
   if (editId) {
     cabin = cabins.filter((c) => c.id === editId).at(0);
   }
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: createCabin,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
 
-      toast.success("Cabin create successfully");
-    },
-  });
+  const mutation = useCreate();
 
   const {
     register,
@@ -113,7 +105,7 @@ export default function CreateCabinForm({ editId, cabins, showAdd }) {
               {...register("discount", {
                 required: "Cabin discount is required",
                 validate: (val) =>
-                  val <= getValues().regularPrice ||
+                  val >= getValues().regularPrice ||
                   "Discount shoul be less than Price",
               })}
             />

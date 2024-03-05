@@ -30,10 +30,10 @@ function Window({ children, windowName, className }) {
   return (
     <div className={className}>
       <MdOutlineClose
-        className="hover:text-indigo-600 font-bold text-stone-700"
+        className="hover:bg-indigo-600 hover:rounded-full hover:p-2 hover:text-stone-100 font-bold hover:fill-slate-50 absolute top-4 right-6"
         onClick={close}
       />
-      <div>{children}</div>
+      {children}
     </div>
   );
 }
@@ -42,3 +42,4 @@ Modal.Open = Open;
 Modal.Window = Window;
 
 export default Modal;
+// "backdrop-sepia-0 bg-gray-50/60 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"

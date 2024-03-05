@@ -7,25 +7,27 @@ export default function Button({ children, onClick, type }) {
     normal: base,
     stretch: base + " w-full",
     cancel:
-      "transition ease-in-out delay-150 duration-300 bg-indigo-50 hover:bg-stone-400 text-stone-600 font-semibold outline-none focus:ring focus:ring-stone-100 px-5 py-2 rounded-lg",
+      "transition ease-in-out delay-150 duration-300 bg-zinc-900 hover:bg-zinc-800 text-stone-100  outline-none focus:ring focus:ring-stone-100 px-5 py-2 rounded-lg",
+    delete:
+      "px-3 py-2 text-stone-100 bg-red-500 hover:bg-red-600 text-md rounded-lg transition-all ease-in-out duration-150",
   };
-  if (type === "stretch")
-    return (
-      <button className={styles[type]} onClick={onClick}>
-        {children}
-      </button>
-    );
 
-  if (type === "normal")
-    return (
-      <button className={styles[type]} onClick={onClick}>
-        {children}
-      </button>
-    );
-  if (type === "cancel")
-    return (
-      <button className={styles[type]} onClick={onClick}>
-        {children}
-      </button>
-    );
+  return (
+    <button className={styles[type]} onClick={onClick}>
+      {children}
+    </button>
+  );
+
+  // if (type === "normal")
+  //   return (
+  //     <button className={styles[type]} onClick={onClick}>
+  //       {children}
+  //     </button>
+  //   );
+  // if (type === "cancel")
+  //   return (
+  //     <button className={styles[type]} onClick={onClick}>
+  //       {children}
+  //     </button>
+  //   );
 }

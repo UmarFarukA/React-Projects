@@ -8,7 +8,7 @@ export default function AppLayout() {
     <div className=" grid grid-cols-[16rem_auto] grid-rows-[5rem_1fr] h-dvh">
       <Header />
       <Sidebar />
-      <main className="bg-neutral-50  col-start-2 px-5 py-3">
+      <main className="relative bg-neutral-50  col-start-2 px-5 py-3">
         <Outlet />
       </main>
     </div>
