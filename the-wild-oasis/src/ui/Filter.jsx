@@ -1,35 +1,31 @@
-import styled, { css } from "styled-components";
+import React from "react";
+import { useSearchParams } from "react-router-dom";
 
-const StyledFilter = styled.div`
-  border: 1px solid var(--color-grey-100);
-  background-color: var(--color-grey-0);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--border-radius-sm);
-  padding: 0.4rem;
-  display: flex;
-  gap: 0.4rem;
-`;
+function Filter({ filterField, options }) {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-const FilterButton = styled.button`
-  background-color: var(--color-grey-0);
-  border: none;
+  // const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
-  ${(props) =>
-    props.active &&
-    css`
-      background-color: var(--color-brand-600);
-      color: var(--color-brand-50);
-    `}
+  const handleFilter = (value) => {
+    searchParams.set(filterField, value);
+    setSearchParams(searchParams);
+    // console.log(searchParams);
+  };
 
-  border-radius: var(--border-radius-sm);
-  font-weight: 500;
-  font-size: 1.4rem;
-  /* To give the same height as select */
-  padding: 0.44rem 0.8rem;
-  transition: all 0.3s;
+  return (
+    <div className="flex gap-2">
+      {options.map((option) => (
+        <button
+          value={option.value}
+          key={option.value}
+          onClick={() => handleFilter(option.value)}
+          className="rounded-md px-3 py-2 bg-stone-100 text-stone-700 hover:bg-indigo-600 hover:text-stone-100"
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
-  &:hover:not(:disabled) {
-    background-color: var(--color-brand-600);
-    color: var(--color-brand-50);
-  }
-`;
+export default Filter;

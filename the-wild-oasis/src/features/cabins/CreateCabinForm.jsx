@@ -1,18 +1,19 @@
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-// import { createCabin } from "../../services/apiCabins";
-// import toast from "react-hot-toast";
 import Button from "../../ui/Button";
 import useCreate from "./useCreate";
+import useUpdateCabin from "./useUpdateCabin";
 
-export default function CreateCabinForm({ editId, cabins, showAdd }) {
+export default function CreateCabinForm({ editId, cabins, showAdd, isEdit }) {
   let cabin;
+  // let id = editId;
+  // console.log(editId);
 
   if (editId) {
     cabin = cabins.filter((c) => c.id === editId).at(0);
   }
 
   const mutation = useCreate();
+  const mutUpdate = useUpdateCabin();
 
   const {
     register,
@@ -27,11 +28,19 @@ export default function CreateCabinForm({ editId, cabins, showAdd }) {
     reset();
   };
 
+  const onEdit = (data) => {
+    mutUpdate.mutate(data, editId);
+    console.log(data, editId);
+    // reset();
+  };
+
+  // console.log(isEdit, editId);
+
   return (
     <div className=" px-4 py-6">
       <form
         className="text-stone-600 text-lg"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={isEdit ? handleSubmit(onEdit) : handleSubmit(onSubmit)}
       >
         <div className="flex flex-col md:grid md:grid-cols-[12rem_1fr] md:items-center my-3">
           <label htmlFor="name">Cabin Name</label>

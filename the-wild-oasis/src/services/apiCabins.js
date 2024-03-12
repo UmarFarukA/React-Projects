@@ -35,14 +35,15 @@ export const deleteCabin = async (id) => {
   return cabin;
 };
 
-export const updateCabin = async (id) => {
+export const updateCabin = async (updateData, id) => {
   const { data, error } = await supabase
     .from("cabins")
-    .update({ other_column: "otherValue" })
+    .update([updateData])
     .eq("id", id)
-    .select();
+    .select()
+    .single();
+  console.log(updateData, id);
 
   if (error) throw new Error("Error in updating cabin");
-
   return data;
 };
