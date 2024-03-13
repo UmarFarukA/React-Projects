@@ -1,17 +1,8 @@
-// import styled from 'styled-components';
-
-// const TableOperations = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 1.6rem;
-// `;
-
-// export default TableOperations;
 import React from "react";
 import Filter from "./Filter";
 import Sort from "./Sort";
 
-function TableOperations({ children }) {
+function TableOperations() {
   return (
     <div className="grid grid-cols-[1fr_30rem]">
       <Filter

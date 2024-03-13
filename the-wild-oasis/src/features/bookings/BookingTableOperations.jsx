@@ -1,10 +1,10 @@
-import SortBy from "../../ui/SortBy";
+import SortBy from "../../ui/Sort";
 import Filter from "../../ui/Filter";
-import TableOperations from "../../ui/TableOperations";
+// import TableOperations from "../../ui/TableOperations";
 
 function BookingTableOperations() {
   return (
-    <TableOperations>
+    <div className="grid grid-cols-[1fr_25rem]">
       <Filter
         filterField="status"
         options={[
@@ -26,7 +26,7 @@ function BookingTableOperations() {
           { value: "totalPrice-asc", label: "Sort by amount (low first)" },
         ]}
       />
-    </TableOperations>
+    </div>
   );
 }
 

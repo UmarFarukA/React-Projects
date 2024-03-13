@@ -1,48 +1,45 @@
-import { useQuery } from "@tanstack/react-query";
 import Heading from "../ui/Heading";
 import Spinner from "../ui/Spinner";
-import { getCabins } from "../services/apiCabins";
+
 import CabinRow from "../features/cabins/CabinRow";
 import { useState } from "react";
 import Button from "../ui/Button";
 import CreateCabinForm from "../features/cabins/CreateCabinForm";
 import CabinTable from "../features/cabins/CabinTable";
 import Modal from "../ui/Modal";
+import Empty from "../ui/Empty";
 import TableOperations from "../ui/TableOperations";
 
 import { useSearchParams } from "react-router-dom";
+import useCabins from "../features/cabins/useCabins";
 
 function Cabins() {
   const [searchParams] = useSearchParams();
   const [showAdd, setShowAdd] = useState(false);
   const [editId, setEditId] = useState(null);
+  const { isLoading, error, cabins } = useCabins();
 
   const filterValue = searchParams.get("discount") || "all";
-  const {
-    isLoading,
-    error,
-    data: cabins,
-  } = useQuery({
-    queryKey: ["cabins"],
-    queryFn: getCabins,
-  });
 
   const onEdit = (id) => {
     setShowAdd(!showAdd);
     setEditId(id);
   };
 
+  if (!cabins) return <Empty resourceName="cabins" />;
+
   // 1- Filtering Cabins
   let filteredCabins;
 
   if (filterValue === "all") filteredCabins = cabins;
+  // console.log(filteredCabins);
 
   if (filterValue === "with-discount") {
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
   }
 
   if (filterValue === "no-discount") {
-    filteredCabins = cabins.filter((cabin) => cabin.discount < 0);
+    filteredCabins = cabins.filter((cabin) => cabin.discount === 0);
   }
 
   // Sorting Cabins
@@ -53,7 +50,7 @@ function Cabins() {
     (a, b) => (a[field] - b[field]) * modifier
   );
 
-  console.log(sortBy);
+  // console.log(sortedCabin);
 
   if (isLoading) return <Spinner />;
 
