@@ -4,6 +4,7 @@ import { MdCabin } from "react-icons/md";
 import { PiUsersThreeThin } from "react-icons/pi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import Uploader from "../data/Uploader";
 
 export default function MainNav() {
   return (
@@ -53,6 +54,10 @@ export default function MainNav() {
           <span>Settings</span>
         </NavLink>
       </li>
+
+      <div className="mt-8">
+        <Uploader />
+      </div>
     </ul>
   );
 }

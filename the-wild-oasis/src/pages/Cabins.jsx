@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 import CreateCabinForm from "../features/cabins/CreateCabinForm";
 import CabinTable from "../features/cabins/CabinTable";
 import Modal from "../ui/Modal";
-import Empty from "../ui/Empty";
+// import Empty from "../ui/Empty";
 import TableOperations from "../ui/TableOperations";
 
 import { useSearchParams } from "react-router-dom";
@@ -26,7 +26,8 @@ function Cabins() {
     setEditId(id);
   };
 
-  if (!cabins) return <Empty resourceName="cabins" />;
+  if (!cabins) return <Spinner />;
+  // <Empty resourceName="cabins" />;
 
   // 1- Filtering Cabins
   let filteredCabins;
