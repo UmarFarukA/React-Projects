@@ -6,7 +6,7 @@ import useBookings from "../features/bookings/useBookings";
 import Spinner from "../ui/Spinner";
 
 function Bookings() {
-  const { isLoading, error, bookings } = useBookings();
+  const { isLoading, error, bookings, count } = useBookings();
   console.log(bookings);
 
   if (isLoading) return <Spinner />;
@@ -19,7 +19,7 @@ function Bookings() {
         <BookingTableOperations />
       </div>
 
-      <BookingTable>
+      <BookingTable count={count}>
         <BookingRow bookings={bookings} />
       </BookingTable>
     </>

@@ -1,6 +1,6 @@
 import Pagination from "../../ui/Pagination";
 
-function BookingTable({ children }) {
+function BookingTable({ children, count }) {
   return (
     <>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -16,7 +16,7 @@ function BookingTable({ children }) {
         <tbody>{children}</tbody>
         <tfoot></tfoot>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </>
   );
 }
