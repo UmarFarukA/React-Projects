@@ -12,6 +12,7 @@ import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ProtectRoute from "./ui/ProtectRoute";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +22,13 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              element={
+                <ProtectRoute>
+                  <AppLayout />
+                </ProtectRoute>
+              }
+            >
               <Route index element={<Navigate replace to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/booking" element={<Bookings />} />

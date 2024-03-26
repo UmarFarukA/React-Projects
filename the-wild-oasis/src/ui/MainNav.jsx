@@ -3,8 +3,10 @@ import { SlCalender } from "react-icons/sl";
 import { MdCabin } from "react-icons/md";
 import { PiUsersThreeThin } from "react-icons/pi";
 import { IoSettingsOutline } from "react-icons/io5";
+
 import { NavLink } from "react-router-dom";
 import Uploader from "../data/Uploader";
+import Logout from "../features/authentication/Logout";
 
 export default function MainNav() {
   return (
@@ -58,6 +60,8 @@ export default function MainNav() {
       <div className="mt-8">
         <Uploader />
       </div>
+
+      <Logout />
     </ul>
   );
 }

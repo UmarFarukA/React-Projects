@@ -30,8 +30,6 @@ export default function CreateCabinForm({ editId, cabins, showAdd, isEdit }) {
 
   const onEdit = (data) => {
     mutUpdate.mutate(data, editId);
-    console.log(data, editId);
-    // reset();
   };
 
   // console.log(isEdit, editId);
