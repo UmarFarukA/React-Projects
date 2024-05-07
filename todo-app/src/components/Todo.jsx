@@ -12,6 +12,8 @@ function Todo() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
+    if (title === "") return;
+
     dispatch(createTodo({ id: uuid(), title: title, isDone: false }));
     setTitle("");
   };
