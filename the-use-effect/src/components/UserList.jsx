@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import PostItem from "./PostItem";
+import UserItem from "./UserItem";
 
-function PostList({ users, searchTerm }) {
+function UserList({ users, searchTerm }) {
   let records;
   if (searchTerm !== "") {
     records = users.filter((user) => user.name.includes(searchTerm));
@@ -12,10 +12,10 @@ function PostList({ users, searchTerm }) {
   return (
     <ul>
       {records.map((record) => (
-        <PostItem user={record} key={record.id} />
+        <UserItem user={record} key={record.id} />
       ))}
     </ul>
   );
 }
 
-export default PostList;
+export default UserList;

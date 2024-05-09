@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import PostList from "./PostList";
+import UserList from "./UserList";
 
-function Post() {
+function User() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   useEffect(function () {
-    const getPost = async () => {
+    const getUsers = async () => {
       await fetch("https://jsonplaceholder.typicode.com/users")
         .then((response) => response.json())
         .then((json) => setData(json));
     };
 
-    getPost();
+    getUsers();
   }, []);
 
   return (
@@ -29,10 +29,10 @@ function Post() {
         </button>
       </div>
       <div>
-        <PostList users={data} searchTerm={search} />
+        <UserList users={data} searchTerm={search} />
       </div>
     </div>
   );
 }
 
-export default Post;
+export default User;

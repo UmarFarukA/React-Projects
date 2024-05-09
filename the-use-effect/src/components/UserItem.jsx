@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function PostItem({ user }) {
+function UserItem({ user }) {
   //   const { name, username } = user;
   return (
     <li className="p-2 bg-slate-200 rounded-md mb-3">
@@ -8,4 +8,4 @@ function PostItem({ user }) {
   );
 }
 
-export default PostItem;
+export default UserItem;
