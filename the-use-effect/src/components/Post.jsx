@@ -29,7 +29,7 @@ function Post() {
         </button>
       </div>
       <div>
-        <PostList users={data} />
+        <PostList users={data} searchTerm={search} />
       </div>
     </div>
   );
