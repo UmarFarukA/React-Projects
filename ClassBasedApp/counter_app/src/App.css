@@ -1,0 +1,10 @@
+.App {
+  margin-top: 3.4rem;
+}
+
+.counter {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+}
