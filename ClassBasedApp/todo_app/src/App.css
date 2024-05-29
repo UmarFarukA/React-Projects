@@ -1,0 +1,90 @@
+body {
+  transition: all;
+  transition-delay: 2ms;
+}
+
+.App {
+  margin-top: 3.4rem;
+  gap: 2.2rem;
+}
+
+.App,
+.todo {
+  justify-content: center;
+}
+
+.App,
+.todo,
+.todo__top,
+.todo__list,
+.todo__item,
+.todo__item-buttons {
+  display: flex;
+}
+.todo,
+.todo__list {
+  flex-direction: column;
+}
+
+.todo {
+  gap: 2.4rem;
+  align-items: flex-start;
+}
+
+h2 {
+  color: green;
+  font-size: 1.8rem;
+  font-weight: 700;
+  align-self: center;
+}
+
+.todo__top {
+  gap: 1.2rem;
+}
+
+.todo__top input {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+  background-color: cornsilk;
+}
+
+.todo__top input:focus {
+  border: 0.2rem solid green;
+}
+
+.todo__top button {
+  padding: 0.6rem 1.2rem;
+  background-color: green;
+  color: whitesmoke;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+.todo__top button:hover {
+  background-color: rgb(9, 147, 9);
+  color: rgb(239, 235, 235);
+}
+
+.todo__list {
+  align-items: start;
+}
+
+.todo__item {
+  list-style: none;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1rem;
+  background-color: whitesmoke;
+
+  border-radius: 1rem solid cornsilk;
+  border: none;
+  width: 100%;
+}
+
+.todo__item,
+.todo__item-buttons {
+  justify-content: space-between;
+  align-items: center;
+}
