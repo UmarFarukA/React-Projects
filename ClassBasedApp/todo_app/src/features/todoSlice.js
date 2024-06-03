@@ -5,24 +5,26 @@ const initialState = {
     {
       id: 1,
       title: "Learn React",
+      isEditing: false,
     },
 
     {
       id: 2,
       title: "Design UIs",
+      isEditing: false,
     },
 
     {
       id: 3,
       title: "Deploy React App",
+      isEditing: false,
     },
   ],
-  isEditing: false,
 };
 
 const CREATE = "CREATE";
 const READ = "READ";
-const EDIT = "EDIT";
+// const EDIT = "EDIT";
 const UPDATE = "UPDATE";
 const DELETE = "DELETE";
 
@@ -35,12 +37,6 @@ const reducer = (state = initialState, action) => {
 
     case READ:
       return { ...state };
-
-    case EDIT:
-      return {
-        isEditing: true,
-        todos: [...state.todos.filter((todo) => todo.id === action.payload.id)],
-      };
 
     case UPDATE:
       return {
@@ -79,14 +75,14 @@ export function read() {
   };
 }
 
-export function edit(id) {
-  return {
-    type: EDIT,
-    payload: {
-      id,
-    },
-  };
-}
+// export function edit(id) {
+//   return {
+//     type: EDIT,
+//     payload: {
+//       id,
+//     },
+//   };
+// }
 
 export function update(todo) {
   return {

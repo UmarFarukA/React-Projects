@@ -9,7 +9,7 @@ class TodoItem extends React.Component {
       <li key={id} className="todo__item">
         <p>{title}</p>
         <div className="todo__item-buttons">
-          <MdEdit />
+          <MdEdit onClick={() => this.props.edit(id)} />
           <MdDelete onClick={() => this.props.remove(id)} />
         </div>
       </li>
