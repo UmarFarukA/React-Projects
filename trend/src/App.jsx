@@ -1,11 +1,17 @@
+import styled from "styled-components";
+import Home from "./ui/Home";
 import "./App.css";
+
+const Body = styled.div`
+  padding: 1rem;
+`;
 
 function App() {
   return (
     <>
-      <div>
-        <h1>App</h1>
-      </div>
+      <Body>
+        <Home />
+      </Body>
     </>
   );
 }

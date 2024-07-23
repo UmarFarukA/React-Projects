@@ -1,0 +1,18 @@
+/* header: {
+      backgroundColor: '#007BFF', // Blue
+      color: '#FFFFFF', // White
+    },
+    button: {
+      backgroundColor: '#FFA500', // Orange
+      color: '#FFFFFF', // White
+    },
+    background: {
+      backgroundColor: '#FFFFFF', // White
+    },
+    text: {
+      color: '#000000', // Black for text on white background
+    } */
+
+body {
+  background-color: #333333;
+}
