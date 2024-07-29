@@ -5,9 +5,10 @@ import Hero from "./Hero";
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: 75dvh;
+  height: 100dvh;
   justify-content: center;
   justify-items: center;
+  background-color: #333333;
 `;
 
 function Home() {

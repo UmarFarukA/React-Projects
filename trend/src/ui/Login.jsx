@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LoginContainer = styled.div`
@@ -46,6 +47,10 @@ const Button = styled.button`
   }
 `;
 
+const Paragraph = styled.p`
+  color: white;
+`;
+
 function Login() {
   return (
     <LoginContainer>
@@ -61,7 +66,12 @@ function Login() {
         </InputControl>
         <Button>Login</Button>
       </div>
-      <p>Join the trends here</p>
+      <Paragraph>
+        Join the trend{" "}
+        <Link to="/register" className="register">
+          here
+        </Link>
+      </Paragraph>
     </LoginContainer>
   );
 }

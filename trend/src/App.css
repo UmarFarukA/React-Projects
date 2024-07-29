@@ -13,6 +13,12 @@
       color: '#000000', // Black for text on white background
     } */
 
-body {
+/* html {
   background-color: #333333;
+} */
+
+.register,
+.login {
+  color: white;
+  /* text-decoration: none; */
 }
