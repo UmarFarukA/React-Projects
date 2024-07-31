@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Umar Faruk A",
+      "username": "ufaz@gmail.com",
+      "password": "pass123",
+      "followers": [2, 3, 4],
+      "following": [2, 4],
+      "isAuthenticated": false
+    },
+
+    {
+      "id": 2,
+      "name": "Kabir Bala",
+      "username": "kabirbala@gmail.com",
+      "password": "pass123",
+      "followers": [2, 3, 4],
+      "following": [2, 4],
+      "isAuthenticated": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Welcome to the world of trend",
+      "posted_by": 1,
+      "posted_on": "22-05-2024"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "text": "Welcome too",
+      "post_id": 1,
+      "comment_date": "23-05-2024"
+    }
+  ],
+
+  "likes": [
+    {
+      "id": 1,
+      "post_id": 1,
+      "post_likes": [2, 3, 4]
+    }
+  ]
+}

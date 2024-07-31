@@ -13,9 +13,11 @@
       color: '#000000', // Black for text on white background
     } */
 
-/* html {
-  background-color: #333333;
-} */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .register,
 .login {

@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -55,27 +56,82 @@ const Button = styled.button`
     background-color: #e6e6e6;
   }
 `;
+const ErrorContainer = styled.span`
+  background-color: rgb(248, 124, 124);
+  color: white;
+`;
 
 function Register() {
+  const {
+    register,
+    getValues,
+    formState: { errors },
+  } = useForm();
   return (
     <RegisterContainer>
       <h3>Join the trend</h3>
       <form>
         <InputControl>
           <Label>Name</Label>
-          <InputField type="text" placeholder="Enter your name" />
+          <InputField
+            type="text"
+            placeholder="Enter your name"
+            {...register("name", {
+              required: "Name is required",
+              min: {
+                value: 2,
+                message: "Name must be at least two characters",
+              },
+            })}
+          />
+          {errors.name && (
+            <ErrorContainer>{errors.name.message}</ErrorContainer>
+          )}
         </InputControl>
         <InputControl>
           <Label>Email</Label>
-          <InputField type="email" placeholder="Enter your email" />
+          <InputField
+            type="email"
+            placeholder="Enter your email"
+            {...register("email", {
+              required: "A valid email is require",
+            })}
+          />
+          {errors.name && (
+            <ErrorContainer>{errors.email.message}</ErrorContainer>
+          )}
         </InputControl>
         <InputControl>
           <Label>Password</Label>
-          <InputField type="password" placeholder="**************" />
+          <InputField
+            type="password"
+            placeholder="**************"
+            {...register("password", {
+              required: "Password is required",
+              min: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
+          />
+          {errors.password && (
+            <ErrorContainer>{errors.password.message}</ErrorContainer>
+          )}
         </InputControl>
         <InputControl>
           <Label>Confirm Password</Label>
-          <InputField type="password" placeholder="**************" />
+          <InputField
+            type="password"
+            placeholder="**************"
+            {...register("confirmPassword", {
+              required: "Confirm your password",
+              validate: (val) =>
+                val === getValues().password || "Passwords do not match",
+            })}
+          />
+          {errors.confirmPassword && (
+            <ErrorContainer>{errors.confirmPassword.message}</ErrorContainer>
+          )}
         </InputControl>
         <Button>Join</Button>
       </form>
