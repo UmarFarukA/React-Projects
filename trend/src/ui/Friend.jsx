@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import Avatar from "./Avatar";
+import { useFollow } from "../features/Users/useFollow";
 const userAvatar = "/src/images/user.png";
 
 const Wrapper = styled.div`
@@ -62,13 +63,19 @@ const BtnCancel = styled.button`
 `;
 
 function Friend({ user }) {
+  const { follow, isLoading } = useFollow();
+  const handleFollow = (id) => {
+    follow(id);
+  };
   return (
     <Wrapper>
       <Avatar path={userAvatar} height="3.4rem" rad="50%" />
       <Details>
         <span>{user.name}</span>
         <div>
-          <BtnFollow>Follow</BtnFollow>
+          <BtnFollow onClick={() => handleFollow(user.id)} disabled={isLoading}>
+            Follow
+          </BtnFollow>
           <BtnCancel>Cancel</BtnCancel>
         </div>
       </Details>

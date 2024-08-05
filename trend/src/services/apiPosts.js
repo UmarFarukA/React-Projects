@@ -2,6 +2,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 const URL = "http://localhost:8000/posts";
+// const URL = "https://trend-data-1.onrender.com/posts";
 
 export async function getPosts() {
   try {

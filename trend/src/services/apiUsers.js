@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 const URL = "http://localhost:8000/users";
+// const URL = "https://trend-data-1.onrender.com/users";
 
 export async function getUsers() {
   try {
@@ -60,10 +62,37 @@ export async function getSuggestedFriends() {
     for (let id of ids) {
       const user = await getUserById(id);
       users_to_follow.push(user);
-      // console.log(users_to_follow);
     }
-    // console.log(users_to_follow);
+
     return users_to_follow;
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
+}
+
+export async function addFollower(id) {
+  try {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !Array.isArray(user.following)) {
+      throw new Error("User data is missing or malformed");
+    }
+
+    user.following.push(Number(id));
+    const data = {
+      following: user.following,
+    };
+    const res = await fetch(`${URL}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error("Error Updating user");
+
+    const patchedData = await res.json();
   } catch (error) {
     throw new Error("Something went wrong");
   }

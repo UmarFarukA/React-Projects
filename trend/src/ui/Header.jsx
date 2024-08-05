@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import { useLogout } from "../features/Auth/useLogout";
+import {
+  HomeIcon,
+  UsersIcon,
+  VideoCameraIcon,
+  ChatBubbleLeftIcon,
+} from "@heroicons/react/16/solid";
+import { useNavigate } from "react-router";
 
 const Heading = styled.header`
   grid-column: 1 / -1;
@@ -7,11 +14,23 @@ const Heading = styled.header`
   border-bottom: 0.6rem;
   /* background-color: rgb(09, 187, 09); */
   background-color: rgb(169, 221, 169);
+  /* background-color: black; */
   color: white;
   padding: 0.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const IconsWrapper = styled.div`
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 8.2rem;
+  /* height: 8.2rem; */
 `;
 
 const Info = styled.div`
@@ -35,12 +54,23 @@ const Logo = styled.span`
 `;
 
 function Header() {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const { logout, isLoading } = useLogout();
+
+  const handleHome = (e) => {
+    e.preventDefault();
+    navigate("/dashboard", { replace: true });
+  };
   return (
     <Heading>
       <Logo>Trend</Logo>
-      <div>Icons</div>
+      <IconsWrapper>
+        <HomeIcon onClick={handleHome} />
+        <UsersIcon />
+        <VideoCameraIcon />
+        <ChatBubbleLeftIcon />
+      </IconsWrapper>
 
       <Info>
         <span>{user.name}</span>

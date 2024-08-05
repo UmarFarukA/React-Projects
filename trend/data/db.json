@@ -5,8 +5,16 @@
       "name": "Umar Faruk A",
       "username": "ufaz@gmail.com",
       "password": "pass123",
-      "followers": [2, 3, 4, 5],
-      "following": [2, 4],
+      "followers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "following": [
+        2,
+        4
+      ],
       "isAuthenticated": false
     },
     {
@@ -14,27 +22,53 @@
       "name": "Kabir Bala",
       "username": "kabirbala@gmail.com",
       "password": "pass123",
-      "followers": [2, 3, 4],
-      "following": [2, 4],
+      "followers": [
+        2,
+        3,
+        4
+      ],
+      "following": [
+        2,
+        4
+      ],
       "isAuthenticated": false
     },
     {
       "id": "3",
-      "name": "Yusuf Umar",
-      "username": "yufash@gmail.com",
+      "name": "Khadijah Umar",
+      "username": "khadijah@gmail.com",
       "password": "pass123",
-      "followers": [4],
-      "following": [1, 2],
+      "confirmPassword": "pass123",
+      "followers": [],
+      "following": [
+        2,
+        4,
+        3
+      ],
       "isAuthenticated": false
     },
     {
-      "id": "5",
-      "name": "Ahamd Umar Faruk",
-      "username": "ahmad@gmail.com",
+      "id": "4",
+      "name": "Yusuf Umar",
+      "username": "yufash@gmail.com",
       "password": "pass123",
       "confirmPassword": "pass123",
       "followers": [],
       "following": [],
+      "isAuthenticated": false
+    },
+    {
+      "id": "5",
+      "name": "Hamza Bello",
+      "username": "maikussa@gmail.com",
+      "password": "pass123",
+      "confirmPassword": "pass123",
+      "followers": [],
+      "following": [
+        2,
+        4,
+        5
+      ],
       "isAuthenticated": false
     }
   ],
@@ -44,7 +78,11 @@
       "content": "Welcome to the world of trend",
       "posted_by": 1,
       "posted_on": "22-05-2024",
-      "likes": [2, 3, 4],
+      "likes": [
+        2,
+        3,
+        4
+      ],
       "comments": [
         {
           "id": 1,
@@ -65,7 +103,10 @@
       "content": "Improve your work productivity by using AI tools",
       "posted_by": 2,
       "posted_on": "20-05-2024",
-      "likes": [3, 4],
+      "likes": [
+        3,
+        4
+      ],
       "comments": [
         {
           "id": 1,
@@ -86,7 +127,10 @@
       "content": "Learn the fundamentals of Web dev on this channel",
       "posted_by": 1,
       "posted_on": "22-05-2024",
-      "likes": [2, 3],
+      "likes": [
+        2,
+        3
+      ],
       "comments": [
         {
           "id": 1,
@@ -107,7 +151,9 @@
       "content": "Nigeria has qualify for Mens U-23 championship in Brazil",
       "posted_by": 3,
       "posted_on": "26-05-2024",
-      "likes": [2],
+      "likes": [
+        2
+      ],
       "comments": [
         {
           "id": 1,
@@ -128,7 +174,10 @@
       "content": "Kaduna begins E-Voting in LG Elections",
       "posted_by": 4,
       "posted_on": "27-05-2024",
-      "likes": [2, 1],
+      "likes": [
+        2,
+        1
+      ],
       "comments": [
         {
           "id": 1,
