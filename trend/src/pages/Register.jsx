@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useSignUp } from "../features/Auth/useSignUp";
 
 const RegisterContainer = styled.div`
   display: grid;
@@ -59,18 +60,28 @@ const Button = styled.button`
 const ErrorContainer = styled.span`
   background-color: rgb(248, 124, 124);
   color: white;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.2rem;
 `;
 
 function Register() {
+  const { register: createUser, isLoading } = useSignUp();
   const {
     register,
+    reset,
     getValues,
+    handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const handleCreate = (data) => {
+    createUser(data);
+    reset();
+  };
   return (
     <RegisterContainer>
       <h3>Join the trend</h3>
-      <form>
+      <form onSubmit={handleSubmit(handleCreate)}>
         <InputControl>
           <Label>Name</Label>
           <InputField
@@ -93,7 +104,7 @@ function Register() {
           <InputField
             type="email"
             placeholder="Enter your email"
-            {...register("email", {
+            {...register("username", {
               required: "A valid email is require",
             })}
           />
@@ -133,7 +144,7 @@ function Register() {
             <ErrorContainer>{errors.confirmPassword.message}</ErrorContainer>
           )}
         </InputControl>
-        <Button>Join</Button>
+        <Button>{isLoading ? "Creating User" : "Join"}</Button>
       </form>
       <p>
         Already have an account? Login{" "}

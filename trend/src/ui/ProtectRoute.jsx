@@ -14,11 +14,9 @@ function ProtectRoute({ children }) {
     }
   }, [user, isLoading, navigate]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading message="Loading" />;
 
   if (user && user.isAuthenticated) return children;
-
-  return null;
 }
 
 export default ProtectRoute;

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 const Paragraph = styled.p`
@@ -5,8 +6,8 @@ const Paragraph = styled.p`
   font-size: 1.2rem;
 `;
 
-function Loading() {
-  return <Paragraph>Loading...</Paragraph>;
+function Loading({ message }) {
+  return <Paragraph>{message}</Paragraph>;
 }
 
 export default Loading;

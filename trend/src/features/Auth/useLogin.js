@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { Login } from "../../services/apiAuth";
+import toast from "react-hot-toast";
 
 export function useLogin() {
   const navigate = useNavigate();
@@ -9,10 +10,13 @@ export function useLogin() {
     mutationFn: ({ username, password }) => Login({ username, password }),
     onSuccess: (user) => {
       queryClient.setQueryData(["user"], user.user);
-      navigate("/dashbaord");
+      navigate("/dashboard");
+      toast.success("Successfully logged in");
     },
 
-    onError: () => {},
+    onError: () => {
+      toast.error("Invalid login credentials");
+    },
   });
 
   return { login, isLoading };

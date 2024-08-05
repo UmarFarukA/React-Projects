@@ -13,22 +13,7 @@ import "./App.css";
 import AppLayout from "./ui/AppLayout";
 import ProtectRoute from "./ui/ProtectRoute";
 import Dashboard from "./pages/Dashboard";
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home />,
-//   },
-
-//   {
-//     path: "register",
-//     element: <Register />,
-//   },
-//   {
-//     path: "dashboard",
-//     element: <AppLayout />,
-//   },
-// ]);
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -45,10 +30,10 @@ function App() {
                 </ProtectRoute>
               }
             >
-              <Route index element={<Navigate replace to="dashboard" />} />
-              <Route path="dashboard" element={<Dashboard />} />
+              <Route index element={<Navigate replace to="/dashboard" />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/profile" element={<Profile />} />
             </Route>
-            <Route path="/" element={<Home />} />
             <Route path="login" element={<Home />} />
             <Route path="register" element={<Register />} />
           </Routes>
@@ -59,15 +44,22 @@ function App() {
         toastOptions={{
           success: {
             style: {
-              background: "background-color: green",
-              color: "color: white",
+              background: "bg-green-600",
+              color: "text-stone-50",
             },
           },
 
           error: {
             style: {
-              background: "background-color: red",
-              color: "color: white",
+              backgroundColor: "red",
+              color: "white",
+            },
+          },
+
+          warning: {
+            style: {
+              backgroundColor: "yellow",
+              color: "white",
             },
           },
         }}

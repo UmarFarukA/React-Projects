@@ -39,11 +39,13 @@ const InputField = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #b3b3b3;
+  background-color: #fff;
   width: 100%;
   padding: 0.6rem 0;
   border-radius: 0.4rem;
-  color: #000;
+  color: rgb(19, 187, 19);
+  font-weight: bolder;
+  font-size: 1rem;
 
   &:hover {
     background-color: #e6e6e6;
@@ -63,11 +65,6 @@ function Login() {
   const { login, isLaoding } = useLogin();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm();
 
   const handleLogin = (e) => {
     e.preventDefault();

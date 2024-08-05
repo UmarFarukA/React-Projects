@@ -1,47 +1,148 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Umar Faruk A",
       "username": "ufaz@gmail.com",
       "password": "pass123",
-      "followers": [2, 3, 4],
+      "followers": [2, 3, 4, 5],
       "following": [2, 4],
       "isAuthenticated": false
     },
-
     {
-      "id": 2,
+      "id": "2",
       "name": "Kabir Bala",
       "username": "kabirbala@gmail.com",
       "password": "pass123",
       "followers": [2, 3, 4],
       "following": [2, 4],
       "isAuthenticated": false
+    },
+    {
+      "id": "3",
+      "name": "Yusuf Umar",
+      "username": "yufash@gmail.com",
+      "password": "pass123",
+      "followers": [4],
+      "following": [1, 2],
+      "isAuthenticated": false
+    },
+    {
+      "id": "5",
+      "name": "Ahamd Umar Faruk",
+      "username": "ahmad@gmail.com",
+      "password": "pass123",
+      "confirmPassword": "pass123",
+      "followers": [],
+      "following": [],
+      "isAuthenticated": false
     }
   ],
   "posts": [
     {
-      "id": 1,
-      "title": "Welcome to the world of trend",
+      "id": "1",
+      "content": "Welcome to the world of trend",
       "posted_by": 1,
-      "posted_on": "22-05-2024"
-    }
-  ],
-  "comments": [
+      "posted_on": "22-05-2024",
+      "likes": [2, 3, 4],
+      "comments": [
+        {
+          "id": 1,
+          "text": "Welcome too",
+          "user_id": 2,
+          "comment_date": "23-05-2024"
+        },
+        {
+          "id": 2,
+          "text": "Welcome too",
+          "user_id": 1,
+          "comment_date": "23-05-2024"
+        }
+      ]
+    },
     {
-      "id": 1,
-      "text": "Welcome too",
-      "post_id": 1,
-      "comment_date": "23-05-2024"
-    }
-  ],
-
-  "likes": [
+      "id": "2",
+      "content": "Improve your work productivity by using AI tools",
+      "posted_by": 2,
+      "posted_on": "20-05-2024",
+      "likes": [3, 4],
+      "comments": [
+        {
+          "id": 1,
+          "text": "great. use ChatGPT",
+          "user_id": 2,
+          "comment_date": "23-05-2024"
+        },
+        {
+          "id": 2,
+          "text": "I recommend Gemini AI",
+          "user_id": 1,
+          "comment_date": "23-05-2024"
+        }
+      ]
+    },
     {
-      "id": 1,
-      "post_id": 1,
-      "post_likes": [2, 3, 4]
+      "id": "3",
+      "content": "Learn the fundamentals of Web dev on this channel",
+      "posted_by": 1,
+      "posted_on": "22-05-2024",
+      "likes": [2, 3],
+      "comments": [
+        {
+          "id": 1,
+          "text": "Great",
+          "user_id": 1,
+          "comment_date": "23-04-2024"
+        },
+        {
+          "id": 2,
+          "text": "recommended",
+          "user_id": 2,
+          "comment_date": "24-04-2024"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "content": "Nigeria has qualify for Mens U-23 championship in Brazil",
+      "posted_by": 3,
+      "posted_on": "26-05-2024",
+      "likes": [2],
+      "comments": [
+        {
+          "id": 1,
+          "text": "congratulations 9ja!!!",
+          "user_id": 1,
+          "comment_date": "23-04-2024"
+        },
+        {
+          "id": 2,
+          "text": "amazing boys",
+          "user_id": 2,
+          "comment_date": "24-04-2024"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "content": "Kaduna begins E-Voting in LG Elections",
+      "posted_by": 4,
+      "posted_on": "27-05-2024",
+      "likes": [2, 1],
+      "comments": [
+        {
+          "id": 1,
+          "text": "Setting the stage",
+          "user_id": 1,
+          "comment_date": "23-04-2024"
+        },
+        {
+          "id": 2,
+          "text": "Leading by example",
+          "user_id": 2,
+          "comment_date": "24-04-2024"
+        }
+      ]
     }
   ]
 }
